@@ -1,0 +1,261 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<div class="pagetitle">
+    <h1>Home Page</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+        <li class="breadcrumb-item active"></li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section dashboard profile">
+    {% if user.groups.all.0.name == 'admin' %}
+    <div class="row">   
+      <div class="col-xxl-4 col-md-6">
+        <div class="card info-card sales-card">
+          <div class="card-body">
+            <h5 class="card-title"> <strong>| Total Students</strong></h5>
+
+            <div class="d-flex align-items-center">
+              <a href="{% url 'students' %}">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-people"></i>
+                </div>
+              </a>
+              <div class="ps-3">
+                <h6>145</h6>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-xxl-4 col-md-6">
+        <div class="card info-card revenue-card">
+          <div class="card-body">
+            <h5 class="card-title">Sign-in <span>| Today</span></h5>
+
+            <div class="d-flex align-items-center">
+              <a href="{% url 'sign_in' %}">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-people"></i>
+              </div></a>
+              <div class="ps-3">
+                <h6 id="sign_in">0</h6>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-xxl-4 col-md-6">
+        <div class="card info-card customers-card">
+          <div class="card-body">
+            <h5 class="card-title">Sign-out <span>| Today</span></h5>
+
+            <div class="d-flex align-items-center">
+              <a href="{% url 'sign_out' %}">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-people"></i>
+              </div></a>
+              <div class="ps-3">
+                <h6 id="sign_out">0</h6>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      {% endif %}
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="card">
+            <div class="card-body pt-3">
+              <ul class="nav nav-tabs nav-tabs-bordered">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile">Read FingerPrint</button>
+                </li>
+
+              </ul>
+            </div>
+        </div>
+
+        </div>
+
+        <div class="col-xl-8">
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile">Student Profile</button>
+                </li>
+
+              </ul>
+              <div class="tab-content pt-2">
+                <div class="tab-pane show active fade profile-edit pt-3" id="profile">
+
+                  <!-- Profile Edit Form -->
+                  <form>
+                    <div class="row mb-3">
+                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Student Image</label>
+                      <div class="col-md-8 col-lg-9">
+                        <img src="{% static 'profile_pic.jpg' %}" alt="Profile">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" class="form-control" id="first_name" value="" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" class="form-control" id="last_name" value="" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Matric No.</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" class="form-control" id="matric_no" value="" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Department</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" class="form-control" id="department" value="" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Faculty</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" class="form-control" id="faculty" value="" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Profile Code</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" class="form-control" id="profile_code" value="" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Gender</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" value="" disabled class="form-control" id="gender">
+                      </div>
+                    </div>
+      
+                  </form>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    
+    
+    <input type="text" id="textInput" value="Hello, this is a different voice." />
+
+    <!-- Button to trigger the text-to-speech function -->
+    <button id="speakButton" data-bs-toggle="modal" data-bs-target="#WarmingModal">Read Out Loud</button>
+  </section>
+
+  <div class="modal fade" id="WarmingModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger"><b>Warning</b> </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Please confirm Student details before proceeding.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Okay</button>
+          <button type="button" class="btn btn-primary">Proceed</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function loadData() {
+            {% comment %} fetch("{% url 'count_mode' %}") {% endcomment %}
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('sign_in').innerHTML = `${data.sign_in}`;
+                document.getElementById('sign_out').innerHTML = `${data.sign_out}`;
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error fetching admin dashboard data:', error);
+            });
+    }
+
+    setInterval(loadData, 2000);
+
+    loadData();
+</script>
+<script>
+  function readOutLoudWithVoice(text, voiceName = 'Google UK English Female') {
+      if ('speechSynthesis' in window) {
+          function speakWithSelectedVoice() {
+              const utterance = new SpeechSynthesisUtterance(text);
+
+              // Get the available voices
+              const voices = window.speechSynthesis.getVoices();
+              const selectedVoice = voices.find(voice => voice.name === voiceName);
+
+              if (selectedVoice) {
+                  utterance.voice = selectedVoice; // Set the selected voice
+              } else {
+                  console.log('Voice not found, using default voice.');
+              }
+
+              window.speechSynthesis.speak(utterance);
+          }
+
+          // Wait for voices to be loaded
+          if (window.speechSynthesis.getVoices().length === 0) {
+              window.speechSynthesis.addEventListener('voiceschanged', speakWithSelectedVoice);
+          } else {
+              speakWithSelectedVoice(); // Voices already loaded
+          }
+      } else {
+          console.log('Your browser does not support text-to-speech.');
+      }
+  }
+
+  document.getElementById('speakButton').addEventListener('click', function() {
+      const text = document.getElementById('textInput').value;
+      
+      readOutLoudWithVoice(text, 'Google UK English Female'); // You can change the voice name here
+  });
+</script>
+{% endblock content %}
+    

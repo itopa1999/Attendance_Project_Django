@@ -1,0 +1,124 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="pagetitle">
+    <h1>Student Details Page</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'sign_in' %}">Sign-In</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'sign_out' %}">Sign-Out</a></li>
+        <li class="breadcrumb-item active">Student Details</li>
+        <li class="breadcrumb-item "></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section profile">
+    <div class="row">
+        <div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src="{% static 'profile_pic.jpg' %}" alt="Profile" class="rounded-circle">
+              <h2>{{student.first_name}}</h2>
+              <h3>{{student.department}}</h3>
+              {% if student.enroll == True %}
+              <h3 class="badge bg-success ">FingerPrint Enrolled</h3>
+              {% else %}
+              <h3 class="badge bg-danger ">FingerPrint not Enrolled</h3>
+              {% endif %}
+              
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-body pt-3">
+                    <ul class="nav nav-tabs nav-tabs-bordered">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile">Student Profile</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content pt-2">
+                        <div class="tab-pane show active fade profile-edit pt-3" id="profile">
+                            <form>
+                                <div class="row mb-3">
+                                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                    <div class="col-md-8 col-lg-9">
+                                      <img src="{% static 'profile_pic.jpg' %}" alt="Profile">
+                                      <div class="pt-2">
+                                        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                        <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                      </div>
+                                    </div>
+                                  </div>
+            
+                                <div class="row mb-3">
+                                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+                                  <div class="col-md-8 col-lg-9">
+                                    <input type="text" class="form-control" name="first_name" value="{{student.first_name}}" >
+                                  </div>
+                                </div>
+            
+                                <div class="row mb-3">
+                                  <label for="company" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                                  <div class="col-md-8 col-lg-9">
+                                    <input type="text" class="form-control" name="last_name" value="{{student.last_name}}" >
+                                  </div>
+                                </div>
+            
+                                <div class="row mb-3">
+                                  <label for="Job" class="col-md-4 col-lg-3 col-form-label">Matric No.</label>
+                                  <div class="col-md-8 col-lg-9">
+                                    <input type="text" class="form-control" name="matric_no" value="{{student.matric_no}}" >
+                                  </div>
+                                </div>
+            
+                                <div class="row mb-3">
+                                  <label for="Country" class="col-md-4 col-lg-3 col-form-label">Department</label>
+                                  <div class="col-md-8 col-lg-9">
+                                    <input type="text" class="form-control" name="department" value="{{student.department}}" >
+                                  </div>
+                                </div>
+            
+                                <div class="row mb-3">
+                                  <label for="Address" class="col-md-4 col-lg-3 col-form-label">Faculty</label>
+                                  <div class="col-md-8 col-lg-9">
+                                    <input type="text" class="form-control" name="faculty" value="{{student.faculty}}" >
+                                  </div>
+                                </div>
+            
+                                <div class="row mb-3">
+                                  <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Profile Code</label>
+                                  <div class="col-md-8 col-lg-9">
+                                    <input type="text" class="form-control" name="profile_code" value="{{student.profile_code}}" readonly>
+                                  </div>
+                                </div>
+            
+                                <div class="row mb-3">
+                                  <label for="Email" class="col-md-4 col-lg-3 col-form-label">Gender</label>
+                                  <div class="col-md-8 col-lg-9">
+                                    <input type="text" value="{{student.gender}}"  class="form-control" name="gender">
+                                  </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                  </div>
+                  
+                              </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+  </section>
+  {% endblock content %}
