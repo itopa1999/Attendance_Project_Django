@@ -26,7 +26,7 @@ import json
 
 #app imports
 from .models import *
-
+from .forms import UserChangeForm
 
 
 def login_user(request):
@@ -91,7 +91,17 @@ def student_detail(request, pk):
 
 
 
-
+def update_student(request, pk):
+    if request.method == 'POST':
+        try:
+            student = Student.objects.get(id=pk)
+        except:
+            return JsonResponse("student is not found")
+        form = UserChangeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Update successfully')
+    return redirect('student_detail')
 
 
 

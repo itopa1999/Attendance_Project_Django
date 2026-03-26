@@ -6,10 +6,10 @@ from users.models import User
 
 
  
-# class UserChangeForm(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ['map_style','distance_units','phone','facebook','whatsapp','linkedin']
+class UserChangeForm(forms.Form):
+    class Meta:
+        model = User
+        fields = ['enroll','profile_code']
 
 
 # class UserForm(forms.ModelForm): 
